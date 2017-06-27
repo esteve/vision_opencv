@@ -3,7 +3,7 @@ project(cv_bridge)
 
 find_package(catkin REQUIRED COMPONENTS rosconsole sensor_msgs)
 
-if(NOT ANDROID)
+if(NOT ANDROID AND NOT CV_BRIDGE_DISABLE_PYTHON)
   find_package(PythonLibs)
   if(PYTHONLIBS_VERSION_STRING VERSION_LESS 3)
     find_package(Boost REQUIRED python)
@@ -27,7 +27,7 @@ catkin_python_setup()
 
 include_directories(include ${Boost_INCLUDE_DIRS} ${OpenCV_INCLUDE_DIRS} ${catkin_INCLUDE_DIRS})
 
-if(NOT ANDROID)
+if(NOT ANDROID AND NOT CV_BRIDGE_DISABLE_PYTHON)
 add_subdirectory(python)
 endif()
 add_subdirectory(src)

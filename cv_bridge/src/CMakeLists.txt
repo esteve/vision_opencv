@@ -6,7 +6,7 @@ target_link_libraries(${PROJECT_NAME} ${OpenCV_LIBRARIES} ${catkin_LIBRARIES})
 
 install(TARGETS ${PROJECT_NAME} DESTINATION ${CATKIN_PACKAGE_LIB_DESTINATION})
 
-if(NOT ANDROID)
+if(NOT ANDROID AND NOT CV_BRIDGE_DISABLE_PYTHON)
 # add a Boost Python library
 find_package(PythonInterp REQUIRED)
 find_package(PythonLibs "${PYTHON_VERSION_MAJOR}.${PYTHON_VERSION_MINOR}")
